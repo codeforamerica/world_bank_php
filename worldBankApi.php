@@ -4,7 +4,8 @@
  * Forces use of JSON format if a format is not provided, otherwise this api gives you xml by default
  * If Language is not provided, then english is used. Default 'items per page' is 10 for all functions.
  * Nearly all these functions are the same. I would like to abstract these if time permits so only two or three functions
- * do the heavy lifting and the methods point to those..
+ * do the heavy lifting and the methods point to those.. Also it may be possible to use this object with entirely static calls
+ * to avoid creating objects (probably resulting in speed increase and memory use reduction).
  */
  
 class worldBankApi extends APIBaseClass{
@@ -21,6 +22,7 @@ class worldBankApi extends APIBaseClass{
 		$data['format'] = ($format=NULL?'json':$format);
 		$data['per_page'] = $items_per_page;
 		$result = $this->_request($api_url . ($language !=NULL? $language . '/':NULL) . "/countries/$country/indicators/$indicator"  , 'GET',$data);
+		return ($result?$result:NULL);
 	}
 	
 	public function call_source($language=NULL,$data_source=NULL,$items_per_page=10,$format=NULL){
@@ -49,7 +51,7 @@ class worldBankApi extends APIBaseClass{
 				if($items_per_page!= NULL) $data['items_per_page'] = $items_per_page;
 					$data['format'] = ($format != NULL?$format:'json');
 		}else
-			$result = $this->_request($api_url . 'source?indicator=10&format=json' );	
+			$result = $this->_request($api_url . 'indicator?indicator=10&format=json' );	
 		return ($result?$result:NULL);
 	}
 	
