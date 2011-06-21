@@ -23,7 +23,7 @@ class worldBankApi extends APIBaseClass{
 			if($format==NULL) $data['format'] = 'json';
 			$result = $this->_request($api_url . ($language !=NULL? $language . '/':NULL) . "topic" . (is_int($topics)?$topics.'/':NULL)  , 'GET',$data);
 		}else{
-			$result = $this->_request($api_url . 'topic?per_page=10&format=json' );
+			$result = $this->_request($api_url . 'topic?per_page=10&format=json','GET');
 		}
 		return($result?$result:NULL);
 	
@@ -47,7 +47,7 @@ class worldBankApi extends APIBaseClass{
 			if($items_per_page!= NULL) $data['items_per_page'] = $items_per_page;
 				$data['format'] = ($format != NULL?$format:'json');
 		}else
-			$result = $this->_request($api_url . 'source?per_page=10&format=json' );
+			$result = $this->_request($api_url . 'source?per_page=10&format=json','GET' );
 			
 		return ($result?$result:NULL);
 	}
@@ -62,7 +62,7 @@ class worldBankApi extends APIBaseClass{
 				if($items_per_page!= NULL) $data['items_per_page'] = $items_per_page;
 					$data['format'] = ($format != NULL?$format:'json');
 		}else
-			$result = $this->_request($api_url . 'indicator?indicator=10&format=json' );	
+			$result = $this->_request($api_url . 'indicator?indicator=10&format=json','GET' );	
 		return ($result?$result:NULL);
 	}
 	
@@ -75,7 +75,7 @@ class worldBankApi extends APIBaseClass{
 			$result = $this->_request($api_url . ($language !=NULL? $language. '/':NULL) . '/country/' , 'GET',$data);
 		
 		}else
-			$result = $this->_request($api_url . 'country?per_page=10&format=json' );
+			$result = $this->_request($api_url . 'country?per_page=10&format=json','GET' );
 		return ($result?$result:NULL);	
 	}
 	public function country_calls_regions($language=NULL,$region=NULL,$items_per_page=10,$format=NULL){
@@ -86,7 +86,7 @@ class worldBankApi extends APIBaseClass{
 			$result = $this->_request($api_url . ($language !=NULL? $language. '/':NULL) . 'region/' , 'GET',$data);
 					
 		}else
-			$result = $this->_request($api_url . 'region?per_page=10&format=json' );
+			$result = $this->_request($api_url . 'region?per_page=10&format=json','GET' );
 		
 		return ($result?$result:NULL);
 	}
