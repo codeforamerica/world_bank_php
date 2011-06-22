@@ -30,7 +30,7 @@ class worldBankApi extends APIBaseClass{
 	}
 	public function call_data($country,$indicator,$from=1960,$to=2011,$items_per_page =10,$language=NULL,$format=NULL){
 		if(is_int($from) && $from < (is_int($to))) $data['date']= $from.$to;
-		$data['format'] = ($format=NULL?'json':$format);
+		$data['format'] = ($format==NULL?'json':$format);
 		$data['per_page'] = $items_per_page;
 		$result = $this->_request($api_url . ($language !=NULL? $language . '/':NULL) . "/countries/$country/indicators/$indicator"  , 'GET',$data);
 		return ($result?$result:NULL);
