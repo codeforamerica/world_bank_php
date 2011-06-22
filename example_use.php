@@ -1,9 +1,7 @@
 <?php
-// simple wrapper for api classes. dies with object information (object values,methods and variables)
-
 // Base API Class
 require 'APIBaseClass.php';
-// Custom API Class
+
 require 'worldBankApi.php';
 
 $new = new worldBankApi();
