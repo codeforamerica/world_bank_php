@@ -59,8 +59,8 @@ class worldBankApi extends APIBaseClass{
 				$data['per_page'] = $items_per_page;
 				$result = $this->_request($api_url . ($language !=NULL? $language . '/':NULL) . "indicator/$data_source" , 'GET',$data);
 			}
-				if($items_per_page!= NULL) $data['items_per_page'] = $items_per_page;
-					$data['format'] = ($format != NULL?$format:'json');
+			if($items_per_page!= NULL) $data['items_per_page'] = $items_per_page;
+			$data['format'] = ($format != NULL?$format:'json');
 		}else
 			$result = $this->_request($api_url . 'indicator?indicator=10&format=json','GET' );	
 		return ($result?$result:NULL);
@@ -94,6 +94,7 @@ class worldBankApi extends APIBaseClass{
 		if(func_num_args()>0) {
 			if($incomelevel!= NULL) $data['incomelevel'] = $incomelevel;
 			if($lendingtype!= NULL) $data['lendingtype'] = $lendingtype;
+			$data['format'] = ($format != NULL?$format:'json');
 			$result = $this->_request($api_url . ($language !=NULL? $language. '/':NULL) . 'lendingtype' , 'GET',$data);
 		}else
 			$result = $this->_request($api_url .'lendingtype?per_page=10&format=json','GET');
@@ -105,6 +106,7 @@ class worldBankApi extends APIBaseClass{
 		if(func_num_args()>0) {
 			if($incomelevel!= NULL) $data['incomelevel'] = $incomelevel;
 			if($lendingtype!= NULL) $data['lendingtype'] = $lendingtype;
+			$data['format'] = ($format != NULL?$format:'json');
 			$result = $this->_request($api_url . ($language !=NULL? $language. '/':NULL) . 'incomelevel' . ($incomelevel?$incomelevel.'/':NULL) , 'GET',$data);
 		}else
 			$result = $this->_request($api_url . 'incomelevel?per_page=10&format=json', 'GET');
