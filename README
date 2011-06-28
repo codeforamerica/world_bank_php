@@ -1,5 +1,5 @@
-Open 311 API
+World Bank API
 
-http://wiki.open311.org/API
+http://data.worldbank.org/developers/api-overview
 
-Updated for GeoReport version 2.
+Implements rest-style API.
