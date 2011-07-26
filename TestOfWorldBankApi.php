@@ -20,6 +20,25 @@ class TestOfApiClass extends UnitTestCase {
     function testApiConstructs(){
     	$this->api = new self::$class_name();
     	$this->check_class_params('_http _root api_url');
+    	
+    	$this->assertNotNull($this->api->call_topic());
+// reference  http://data.worldbank.org/querybuilder 
+		$this->assertNotNull($this->api->call_data('BEL','AG.CON.FERT.ZS'));
+		
+		$this->assertNotNull($this->api->call_source());
+		
+		$this->assertNotNull($this->api->call_indicator());
+		
+		$this->assertNotNull($this->api->country_calls_countries());
+		
+		$this->assertNotNull($this->api->country_calls_regions());
+		
+		$this->assertNotNull($this->api->country_calls_lendingtype());
+		
+		$this->assertNotNull($this->api->country_calls_incomelevel());
+    	
+    	
+    	
     }
 
     function check_class_params($params=NULL,$mode=TRUE){
